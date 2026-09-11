@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mondialito Toumodi Final</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0f14;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      margin: auto;
+      padding-bottom: 40px;
+    }
+
+    /* HEADER */
+    header {
+      padding: 22px 18px 10px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 14px;
+      font-weight: bold;
+      color: #f5a623;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 27px;
+      margin-top: 8px;
+    }
+
+    .subtitle {
+      color: #9ca3af;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    /* MATCH CARD */
+    .match-card {
+      margin: 20px 15px;
+      padding: 25px 18px;
+      background: linear-gradient(145deg, #151b23, #10151c);
+      border: 1px solid #242b35;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .final-label {
+      display: inline-block;
+      background: #f5a623;
+      color: #111;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .teams {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .team {
+      width: 40%;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .vs {
+      font-size: 15px;
+      color: #f5a623;
+      font-weight: bold;
+    }
+
+    .match-info {
+      margin-top: 18px;
+      color: #b8c0ca;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* COUNTDOWN */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .time-box {
+      background: #0b0f14;
+      border: 1px solid #252d38;
+      border-radius: 10px;
+      padding: 9px 8px;
+      min-width: 58px;
+    }
+
+    .time-box strong {
+      display: block;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .time-box span {
+      font-size: 10px;
+      color: #8b95a1;
+      text-transform: uppercase;
+    }
+
+    /* BUTTON */
+    .main-button {
+      display: block;
+      width: calc(100% - 30px);
+      margin: 20px 15px;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      background: #f5a623;
+      color: #111;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .main-button:active {
+      transform: scale(0.98);
+    }
+
+    /* FORM */
+    .form-section {
+      margin: 25px 15px;
+      padding: 20px;
+      background: #11161d;
+      border: 1px solid #242b35;
+      border-radius: 18px;
+    }
+
+    .form-section h2 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .form-description {
+      color: #8f98a5;
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    .question {
+      margin-bottom: 22px;
+    }
+
+    .question label.title {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+    }
+
+    .option input {
+      display: none;
+    }
+
+    .option label {
+      display: block;
+      padding: 12px 5px;
+      text-align: center;
+      border: 1px solid #303945;
+      border-radius: 9px;
+      color: #c7cdd5;
+      font-size: 13px;
+      cursor: pointer;
+      background: #0c1117;
+    }
+
+    .option input:checked + label {
+      background: #f5a623;
+      border-color: #f5a623;
+      color: #111;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    select {
+      width: 100%;
+      padding: 14px;
+      border-radius: 9px;
+      border: 1px solid #303945;
+      background: #0c1117;
+      color: white;
+      outline: none;
+      font-size: 14px;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #f5a623;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #f5a623;
+      color: #111;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .notice {
+      margin-top: 12px;
+      font-size: 11px;
+      line-height: 1.5;
+      color: #747e8a;
+      text-align: center;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #59636f;
+      font-size: 11px;
+    }
+
+    .signature {
+      margin-top: 5px;
+      color: #737d89;
+    }
+
+    /* SUCCESS */
+    #success {
+      display: none;
+      text-align: center;
+      padding: 25px 10px;
+    }
+
+    #success .check {
+      font-size: 45px;
+      margin-bottom: 12px;
+    }
+
+    #success h2 {
+      margin-bottom: 8px;
+    }
+
+    #success p {
+      color: #9ca3af;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 350px) {
+      h1 {
+        font-size: 23px;
+      }
+
+      .team {
+        font-size: 17px;
+      }
+
+      .time-box {
+        min-width: 50px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="logo">🏆 Mondialito Toumodi</div>
+    <h1>LA FINALE SE JOUE ICI.</h1>
+    <div class="subtitle">Pronostics gratuits</div>
+  </header>
+
+  <section class="match-card">
+
+    <div class="final-label">GRANDE FINALE</div>
+
+    <div class="teams">
+      <div class="team">FAVELAS</div>
+      <div class="vs">VS</div>
+      <div class="team">TIASSALÉ</div>
+    </div>
+
+    <div class="match-info">
+      📅 Dimanche 13 septembre 2026<br>
+      🕒 Coup d'envoi : 15h00
+    </div>
+
+    <div class="countdown">
+      <div class="time-box">
+        <strong id="days">00</strong>
+        <span>Jours</span>
+      </div>
+
+      <div class="time-box">
+        <strong id="hours">00</strong>
+        <span>Heures</span>
+      </div>
+
+      <div class="time-box">
+        <strong id="minutes">00</strong>
+        <span>Min</span>
+      </div>
+
+      <div class="time-box">
+        <strong id="seconds">00</strong>
+        <span>Sec</span>
+      </div>
+    </div>
+
+  </section>
+
+  <a href="#pronostic" class="main-button">
+    FAIRE MON PRONOSTIC
+  </a>
+
+  <section class="form-section" id="pronostic">
+
+    <h2>Mon pronostic</h2>
+
+    <p class="form-description">
+      Tente de prédire le résultat de la grande finale.
+    </p>
+
+    <form id="predictionForm">
+
+      <!-- RESULTAT -->
+      <div class="question">
+
+        <label class="title">
+          1. Temps réglementaire
+        </label>
+
+        <div class="options">
+
+          <div class="option">
+            <input type="radio" id="favelas" name="resultat" value="FAVELAS" required>
+            <label for="favelas">FAVELAS</label>
+          </div>
+
+          <div class="option">
+            <input type="radio" id="nul" name="resultat" value="NUL">
+            <label for="nul">NUL</label>
+          </div>
+
+          <div class="option">
+            <input type="radio" id="tiassale" name="resultat" value="TIASSALÉ">
+            <label for="tiassale">TIASSALÉ</label>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- SCORE -->
+      <div class="question">
+
+        <label class="title">
+          2. Score exact
+        </label>
+
+        <input
+          type="text"
+          name="score"
+          placeholder="Exemple : 2 - 1"
+          required
+        >
+
+      </div>
+
+
+      <!-- PENALTIES -->
+      <div class="question">
+
+        <label class="title">
+          3. En cas de tirs au but
+        </label>
+
+        <div class="options">
+
+          <div class="option">
+            <input type="radio" id="penFavelas" name="penalty" value="FAVELAS">
+            <label for="penFavelas">FAVELAS</label>
+          </div>
+
+          <div class="option">
+            <input type="radio" id="penTiassale" name="penalty" value="TIASSALÉ">
+            <label for="penTiassale">TIASSALÉ</label>
+          </div>
+
+          <div class="option">
+            <input type="radio" id="penAucun" name="penalty" value="AUCUN">
+            <label for="penAucun">AUCUN</label>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- BUTEUR -->
+      <div class="question">
+
+        <label class="title">
+          4. Premier buteur
+        </label>
+
+        <select name="buteur" required>
+
+          <option value="">Choisir un joueur</option>
+
+          <option value="Joueur 1">Joueur 1</option>
+          <option value="Joueur 2">Joueur 2</option>
+          <option value="Joueur 3">Joueur 3</option>
+
+        </select>
+
+      </div>
+
+
+      <!-- NOM -->
+      <div class="question">
+
+        <label class="title">
+          5. Ton nom
+        </label>
+
+        <input
+          type="text"
+          name="nom"
+          placeholder="Nom et prénom"
+          required
+        >
+
+      </div>
+
+
+      <!-- WHATSAPP -->
+      <div class="question">
+
+        <label class="title">
+          6. Numéro WhatsApp
+        </label>
+
+        <input
+          type="tel"
+          name="telephone"
+          placeholder="Exemple : 07 XX XX XX XX"
+          required
+        >
+
+      </div>
+
+
+      <button type="submit" class="submit-button">
+        ENVOYER MON PRONOSTIC
+      </button>
+
+      <p class="notice">
+        Pronostic entièrement gratuit. Aucun argent n'est engagé.
+      </p>
+
+    </form>
+
+
+    <div id="success">
+
+      <div class="check">✅</div>
+
+      <h2>Pronostic enregistré !</h2>
+
+      <p>
+        Merci pour ta participation à la grande finale
+        du Mondialito Toumodi.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+
+    Mondialito Toumodi Final — 2026
+
+    <div class="signature">
+      Site de pronostics gratuits
+    </div>
+
+  </footer>
+
+</div>
+
+
+<script>
+
+  /* COMPTE À REBOURS */
+
+  const finalDate = new Date("September 13, 2026 15:00:00").getTime();
+
+  function countdown() {
+
+    const now = new Date().getTime();
+
+    const distance = finalDate - now;
+
+    if (distance <= 0) {
+
+      document.getElementById("days").textContent = "00";
+      document.getElementById("hours").textContent = "00";
+      document.getElementById("minutes").textContent = "00";
+      document.getElementById("seconds").textContent = "00";
+
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24))
+      / (1000 * 60 * 60)
+    );
+
+    const minutes = Math.floor(
+      (distance % (1000 * 60 * 60))
+      / (1000 * 60)
+    );
+
+    const seconds = Math.floor(
+      (distance % (1000 * 60))
+      / 1000
+    );
+
+    document.getElementById("days").textContent =
+      String(days).padStart(2, "0");
+
+    document.getElementById("hours").textContent =
+      String(hours).padStart(2, "0");
+
+    document.getElementById("minutes").textContent =
+      String(minutes).padStart(2, "0");
+
+    document.getElementById("seconds").textContent =
+      String(seconds).padStart(2, "0");
+  }
+
+  countdown();
+
+  setInterval(countdown, 1000);
+
+
+  /* FORMULAIRE */
+
+  document
+    .getElementById("predictionForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      this.style.display = "none";
+
+      document.getElementById("success").style.display = "block";
+
+    });
+
+</script>
+
+</body>
+</html>
